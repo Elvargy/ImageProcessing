@@ -36,7 +36,7 @@ I = imbinarize(I, 'adaptive','Sensitivity',0.7); %This turns the image into bina
 I = imcomplement(I); %Since the output came back with a white backgrouns and black objects, this function flips 
 figure;              %those pixel values around to acheieve the output
 imshow(I); %This displays the image
-title('Step-5: Image Seperation');
+title('Step-5: Image Segmentation');
 
 % Step-6: Morphological Processing
 I = bwareaopen(I, 14); %This removes all of the extra white dots that aren't a part of the objects.
