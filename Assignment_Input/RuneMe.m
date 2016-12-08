@@ -41,7 +41,7 @@ title('Step-6: Morphological Processing');
 
 % Step-7: Starfish Recgonition
 %EASY VERSION%
-BW2 = bwareafilt (I,[950 1500]);
+BW2 = bwareafilt (I,[950 1200]);
 figure;
 imshow(BW2);
 title('Step-7a: Starfish Recgonition - Easy Version');
@@ -56,7 +56,7 @@ metric = 4*pi*area/perimeter.^2;
 
 % display(area);
 
-idx = find(((950 <= area) & (area <= 1500)) & ((0.05 <= metric) & (metric <= 0.15)));
+idx = find(((950 <= area) & (area <= 1200)) & ((0.05 <= metric) & (metric <= 0.15)));
 
 bw2 = ismember(b, idx);
 figure;

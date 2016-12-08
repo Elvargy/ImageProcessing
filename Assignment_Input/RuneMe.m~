@@ -40,13 +40,13 @@ imshow(I);
 title('Step-6: Morphological Processing');
 
 % Step-7: Starfish Recgonition
-
+%EASY VERSION%
 BW2 = bwareafilt (I,[950 1500]);
 figure;
 imshow(BW2);
-title('Step-7: Starfish Recgonition');
+title('Step-7a: Starfish Recgonition - Easy Version');
 
-
+%COMPLEX VERSION%
 b = bwlabel(I);
 s = regionprops(b, 'Area', 'Perimeter');
 
@@ -54,13 +54,14 @@ area = [s.Area];
 perimeter = [s.Perimeter];
 metric = 4*pi*area/perimeter.^2;
 
-display(area);
+% display(area);
 
-idx = find(((950 <= area) & (area <= 1500)) & ((0.05 <= metric) & (metric <= 0.15)));
+idx = find(((950 <= area) & (area <= 1420)) & ((0.05 <= metric) & (metric <= 0.15)));
 
 bw2 = ismember(b, idx);
 figure;
 imshow(bw2);
+title('Step-7b: Starfish Recgonition - Complex Version');
 
 
 % ATTEMPT AT ANOTHER DETECTION METHOD %
