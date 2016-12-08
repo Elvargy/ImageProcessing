@@ -53,13 +53,13 @@ title('Step-7a: Starfish Recgonition - Easy Version');
 
 %COMPLEX VERSION%
 b = bwlabel(I); %This function seeks out connected pixels (objects) and assigns a numbered label to them
-% s = regionprops(b, 'Area', 'Perimeter'); %This gathers the area and perimeter of the labaled objects
+s = regionprops(b, 'Area', 'Perimeter'); %This gathers the area and perimeter of the labaled objects
 
-% area = [s.Area]; %These functions take the information about the area and perimeter from 's' and put it into a readable matrix
-% perimeter = [s.Perimeter];
-% 
+area = [s.Area]; %These functions take the information about the area and perimeter from 's' and put it into a readable matrix
+perimeter = [s.Perimeter];
+
 % display(area); %These outputs aren't needed for the final output, however it helped whilst attempting the solution
-% display(perimeter); %Due to being pointless for the output, 's', 'area', and 'perimeter' and these outputs are commented out.
+% display(perimeter); %Due to being pointless for the output these outputs are commented out.
 
 metric = 4*pi*area/perimeter.^2; %This gives 'metric' the formular to calculate roundness which helps with the starfish detection.
 
