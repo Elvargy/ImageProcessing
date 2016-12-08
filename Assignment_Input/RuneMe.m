@@ -46,25 +46,27 @@ title('Step-6: Morphological Processing');
 
 % Step-7: Starfish Recgonition
 %EASY VERSION%
-BW2 = bwareafilt (I,[950 1200]);
-figure;
+BW2 = bwareafilt (I,[950 1200]); %This extracts objects with an area within the inputted range
+figure;                          %Seen as the Starfish have a similar area, it didn't take long to find the correct range.
 imshow(BW2); %This displays the image
 title('Step-7a: Starfish Recgonition - Easy Version');
 
 %COMPLEX VERSION%
-b = bwlabel(I);
-s = regionprops(b, 'Area', 'Perimeter');
+b = bwlabel(I); %This function seeks out connected pixels (objects) and assigns a numbered label to them
+% s = regionprops(b, 'Area', 'Perimeter'); %This gathers the area and perimeter of the labaled objects
 
-area = [s.Area];
-perimeter = [s.Perimeter];
-metric = 4*pi*area/perimeter.^2;
+% area = [s.Area]; %These functions take the information about the area and perimeter from 's' and put it into a readable matrix
+% perimeter = [s.Perimeter];
+% 
+% display(area); %These outputs aren't needed for the final output, however it helped whilst attempting the solution
+% display(perimeter); %Due to being pointless for the output, 's', 'area', and 'perimeter' and these outputs are commented out.
 
-% display(area);
+metric = 4*pi*area/perimeter.^2; %This gives 'metric' the formular to calculate roundness which helps with the starfish detection.
 
-idx = find(((950 <= area) & (area <= 1200)) & ((0.05 <= metric) & (metric <= 0.15)));
+idx = find(((950 <= area) & (area <= 1200)) & ((0.05 <= metric) & (metric <= 0.15))); %This finds objects that fit into the assinged parameters 
 
-bw2 = ismember(b, idx);
-bw2 = medfilt2(bw2);
+bw2 = ismember(b, idx); %This function retuns the results of the 'idx' variable when applied to the 'b' variable
+bw2 = medfilt2(bw2); %This adds another median filter just to make the starfish less 'specky' resulting in a cleaner output
 figure;
 imshow(bw2); %This displays the image
 title('Step-7b: Starfish Recgonition - Complex Version');
