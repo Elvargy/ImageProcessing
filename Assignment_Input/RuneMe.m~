@@ -34,14 +34,15 @@ title('Step-4: Image Enhancement');
 % Step-5: Image Segmentation
 I = imbinarize(I, 'adaptive','Sensitivity',0.7); %This turns the image into binary by replacing all of the pixels with either 0's or 1's
 I = imcomplement(I); %Since the output came back with a white backgrouns and black objects, this function flips 
-figure;              %those pixel values around to acheieve the output
+                     %those pixel values around to acheieve the output
+figure;
 imshow(I); %This displays the image
 title('Step-5: Image Seperation');
 
 % Step-6: Morphological Processing
-I = bwareaopen(I, 14); %This removes all of the extra white dots that aren't a part of the objects.
-figure;                %This is done by removing any objects with a size less than the assinged number.
-imshow(I); %This displays the image.
+I = bwareaopen(I, 14);
+figure;
+imshow(I); %This displays the image
 title('Step-6: Morphological Processing');
 
 % Step-7: Starfish Recgonition
