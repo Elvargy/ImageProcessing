@@ -70,23 +70,3 @@ bw2 = medfilt2(bw2); %This adds another median filter just to make the starfish 
 figure;
 imshow(bw2); %This displays the image
 title('Step-7b: Starfish Recgonition - Complex Version');
-
-
-% FIRST ATTEMPT AT A COMPLEX DETECTION METHOD %
-% [label, num] = bwlabel(I, 8);
-% region = regionprops(I,'Area', 'Perimeter');
-% metric = [];
-% 
-% 
-% for k = 1:length(label)
-%   
-%   metric = [metric;[4*pi*region(k).Area/region(k).Perimeter^2]];
-%     
-% end
-% 
-% finder = find(metric < 0.26);
-% result = ismember(label, finder);
-% 
-% figure;
-% imshow(result);
-% title('Step-7: Starfish Recgonition');
